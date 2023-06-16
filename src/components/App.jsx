@@ -67,7 +67,7 @@ export const App = () => {
       <ContactForm submit={handleSubmit} />
       <h2>Contacts</h2>
       <Filter filterUsers={filterUsers } />
-      <ContactList />
+      <ContactList filter={filter } />
       
     </div>
   );

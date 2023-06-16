@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useState } from "react";
 
-export const ContactList =()=> {
+export const ContactList =({filter})=> {
 
 const [contacts, setContacts] = useState([
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -10,7 +10,7 @@ const [contacts, setContacts] = useState([
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
 
-    const [filter, setFilter] = useState('');
+    
     
     
     const itemToIterate = () => {
