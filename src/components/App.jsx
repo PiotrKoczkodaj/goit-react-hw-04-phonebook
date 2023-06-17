@@ -15,10 +15,11 @@ export const App = () => {
   let [filter, setFilter] = useState('');
 
   useEffect(() => {
-    if (localStorage.getItem('Persons') === null) {
+    if (localStorage.getItem('Persons') === []) {
+      console.log(contacts)
       localStorage.setItem('Persons', JSON.stringify(contacts));
   }
-  }, [])
+  })
   
   const handleSubmit = e => {
     e.preventDefault();
