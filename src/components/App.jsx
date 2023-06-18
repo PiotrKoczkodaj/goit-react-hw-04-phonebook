@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { ContactForm } from "./ContactForm/ContactForm";
+import { useState } from 'react';
+import { ContactForm } from './ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
-import { ContactList } from "./ContactList/ContactList";
+import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const App = () => {
   const [contacts, setContacts] = useState([
@@ -13,24 +13,24 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   let [filter, setFilter] = useState('');
-
   useEffect(() => {
     if (localStorage.getItem('Persons') === null) {
       localStorage.setItem('Persons', JSON.stringify(contacts));
-  }
-  })
-  
+    }
+  });
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const nameValue = form.elements[0].value;
-      const number = form.elements[1].value;
-      setContacts([...contacts, {
+    const number = form.elements[1].value;
+    setContacts([
+      ...contacts,
+      {
         name: nameValue,
         id: nanoid(),
         number: number,
-      }]);
-      
+      },
+    ]);
     let gettingPersons = localStorage.getItem('Persons');
     gettingPersons = JSON.parse(gettingPersons);
     gettingPersons.push({
@@ -42,34 +42,40 @@ export const App = () => {
     return contacts.map(contact => {
       if (contact.name === nameValue) {
         alert(`${nameValue} is already in contacts`);
-       let personFromStorage= localStorage.getItem('Persons');
+        let personFromStorage = localStorage.getItem('Persons');
         let parsedPerson = JSON.parse(personFromStorage);
-        localStorage.setItem('Persons',JSON.stringify(parsedPerson.splice(0,parsedPerson.length-1)))
+        localStorage.setItem(
+          'Persons',
+          JSON.stringify(parsedPerson.splice(0, parsedPerson.length - 1))
+        );
       }
       return null;
     });
   };
   const filterUsers = e => {
-    setFilter(filter = e.target.value.toLowerCase())
+    setFilter((filter = e.target.value.toLowerCase()));
   };
   return (
     <div
       style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-          flexDirection: 'column',
-        }}
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 40,
+        color: '#010101',
+        flexDirection: 'column',
+      }}
     >
       <h2>Phonebook</h2>
       <ContactForm submit={handleSubmit} />
       <h2>Contacts</h2>
-      <Filter filterUsers={filterUsers } />
-      <ContactList filter={filter} contacts={contacts} setContacts={setContacts} />
-      
+      <Filter filterUsers={filterUsers} />
+      <ContactList
+        filter={filter}
+        contacts={contacts}
+        setContacts={setContacts}
+      />
     </div>
   );
 };
