@@ -50,7 +50,7 @@ export const App = () => {
     });
   };
   const filterUsers = e => {
-    setFilter(filter = e.target.value.toUpperCase())
+    setFilter(filter = e.target.value.toLowerCase())
   };
   return (
     <div
@@ -68,7 +68,7 @@ export const App = () => {
       <ContactForm submit={handleSubmit} />
       <h2>Contacts</h2>
       <Filter filterUsers={filterUsers } />
-      <ContactList filter={filter } />
+      <ContactList filter={filter} contacts={contacts} setContacts={setContacts} />
       
     </div>
   );
