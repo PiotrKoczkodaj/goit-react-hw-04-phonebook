@@ -16,7 +16,7 @@ export const App = () => {
 
   useEffect(() => {
     if (localStorage.getItem('Persons') === null) {
-      localStorage.setItem('Persons', JSON.stringify([...contacts]));
+      localStorage.setItem('Persons', JSON.stringify(contacts));
   }
   })
   
@@ -42,8 +42,9 @@ export const App = () => {
     return contacts.map(contact => {
       if (contact.name === nameValue) {
         alert(`${nameValue} is already in contacts`);
-        setContacts(contacts);
-        return gettingPersons
+       let personFromStorage= localStorage.getItem('Persons');
+        let parsedPerson = JSON.parse(personFromStorage);
+        localStorage.setItem('Persons',JSON.stringify(parsedPerson.splice(0,parsedPerson.length-1)))
       }
       return null;
     });

@@ -13,13 +13,14 @@ const [contacts, setContacts] = useState([
     
     
     
-    const itemToIterate = () => {
+  const itemToIterate = () => {
       if (JSON.parse(localStorage.getItem('Persons')) === null) {
         return contacts
       } else {
         return JSON.parse(localStorage.getItem('Persons'));
       }
-    };
+  };
+
     return (
       <div>
         {itemToIterate()
