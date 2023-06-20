@@ -40,26 +40,26 @@ export const App = () => {
         number: number,
       },
     ]);
-    let gettingPersons = localStorage.getItem('Persons');
-    gettingPersons = JSON.parse(gettingPersons);
-    gettingPersons.push({
-      name: nameValue,
-      id: nanoid(),
-      number: number,
-    });
-    localStorage.setItem('Persons', JSON.stringify(gettingPersons));
-    return contacts.map(contact => {
-      if (contact.name === nameValue) {
-        alert(`${nameValue} is already in contacts`);
-        let personFromStorage = localStorage.getItem('Persons');
-        let parsedPerson = JSON.parse(personFromStorage);
-        localStorage.setItem(
-          'Persons',
-          JSON.stringify(parsedPerson.splice(0, parsedPerson.length - 1))
-        );
-      }
-      return null;
-    });
+    // let gettingPersons = localStorage.getItem('Persons');
+    // gettingPersons = JSON.parse(gettingPersons);
+    // gettingPersons.push({
+    //   name: nameValue,
+    //   id: nanoid(),
+    //   number: number,
+    // });
+    // localStorage.setItem('Persons', JSON.stringify(gettingPersons));
+    // return contacts.map(contact => {
+    //   if (contact.name === nameValue) {
+    //     alert(`${nameValue} is already in contacts`);
+    //     let personFromStorage = localStorage.getItem('Persons');
+    //     let parsedPerson = JSON.parse(personFromStorage);
+    //     localStorage.setItem(
+    //       'Persons',
+    //       JSON.stringify(parsedPerson.splice(0, parsedPerson.length - 1))
+    //     );
+    //   }
+    //   return null;
+    // });
   };
   const filterUsers = e => {
     setFilter((filter = e.target.value.toLowerCase()));

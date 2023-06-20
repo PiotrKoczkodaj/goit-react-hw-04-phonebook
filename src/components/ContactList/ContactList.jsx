@@ -11,7 +11,7 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
   //   }
   // };
  
-
+console.log(contacts)
   return (
     <div>
       {contacts
@@ -23,22 +23,23 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
             {contact.number}
             <button
               onClick={e => {
-                let index = contacts.indexOf(contact);
-                setContacts(contacts.splice(index, 1));
-                let localStoragePersons = JSON.parse(
-                  localStorage.getItem('Persons')
-                );
-                localStoragePersons.map(person => {
-                  if (person.name === e.currentTarget.value) {
-                    let index = localStoragePersons.indexOf(person);
-                    localStoragePersons.splice(index, 1);
-                    localStorage.setItem(
-                      'Persons',
-                      JSON.stringify(localStoragePersons)
-                    );
-                  }
-                  return null;
-                });
+            
+                setContacts(contacts.filter(contact => contact.name=== e.target.value
+                ))
+            //  let a=contacts.filter((contact) => {
+            //       console.log(e.target.value)
+            //       e.target.value === contact.name
+            //     })
+            //     console.log(a)
+                // if (e.target.value === contact.name) {
+                //   let index = contacts.indexOf(contact);
+                //   let contactsWithoutUser = [];
+                //   console.log(contactsWithoutUser)
+                //  setContacts(contactsWithoutUser);
+                  
+                // }
+                
+            
               }}
               value={contact.name}
             >
