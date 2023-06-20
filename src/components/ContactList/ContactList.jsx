@@ -10,9 +10,7 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
   //     return JSON.parse(localStorage.getItem('Persons'));
   //   }
   // };
-  useEffect(() => {
-      localStorage.setItem('Persons', JSON.stringify(contacts));
-  },contacts);
+ 
 
   return (
     <div>

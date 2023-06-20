@@ -22,7 +22,9 @@ export const App = () => {
     }
   },[]);
   
-
+ useEffect(() => {
+      localStorage.setItem('Persons', JSON.stringify(contacts));
+  },[contacts]);
 
   const handleSubmit = e => {
     e.preventDefault();
