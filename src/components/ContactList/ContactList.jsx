@@ -12,7 +12,7 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
   // };
   useEffect(() => {
       localStorage.setItem('Persons', JSON.stringify(contacts));
-  }, [contacts]);
+  },[contacts]);
 
   return (
     <div>
