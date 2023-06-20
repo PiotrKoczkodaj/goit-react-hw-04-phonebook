@@ -20,11 +20,9 @@ export const App = () => {
     } else {
       setContacts(JSON.parse(localStorage.getItem('Persons')))
     }
-  }, []);
+  },[]);
   
-useEffect(() => {
-      localStorage.setItem('Persons', JSON.stringify(contacts));
-  }, [contacts]);
+
 
   const handleSubmit = e => {
     e.preventDefault();

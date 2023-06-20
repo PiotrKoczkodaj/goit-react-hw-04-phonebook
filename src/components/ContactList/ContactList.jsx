@@ -9,6 +9,10 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
   //     return JSON.parse(localStorage.getItem('Persons'));
   //   }
   // };
+  useEffect(() => {
+      localStorage.setItem('Persons', JSON.stringify(contacts));
+  }, [contacts]);
+
   return (
     <div>
       {contacts
@@ -20,15 +24,11 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
             {contact.number}
             <button
               onClick={e => {
-                contacts.map((contact) => {
-                  if (contact.name === e.currentTarget.value) {
-                    let index = contacts.indexOf(contact);
-                    setContacts(contacts.splice(index, 1));
-                  }
-                })
-                 let localStoragePersons = JSON.parse(
-                   localStorage.getItem('Persons')
-                 );
+                let index = contacts.indexOf(contact);
+                setContacts(contacts.splice(index, 1));
+                let localStoragePersons = JSON.parse(
+                  localStorage.getItem('Persons')
+                );
                 localStoragePersons.map(person => {
                   if (person.name === e.currentTarget.value) {
                     let index = localStoragePersons.indexOf(person);
