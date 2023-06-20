@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 export const ContactList = ({ filter, contacts, setContacts }) => {
   // const itemToIterate = () => {
