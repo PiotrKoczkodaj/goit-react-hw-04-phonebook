@@ -20,6 +20,7 @@ export const App = () => {
     } else {
       setContacts(JSON.parse(localStorage.getItem('Persons')))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   
  useEffect(() => {
