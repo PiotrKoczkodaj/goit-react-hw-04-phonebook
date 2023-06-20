@@ -2,16 +2,16 @@ import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
 export const ContactList = ({ filter, contacts, setContacts }) => {
-  const itemToIterate = () => {
-    if (JSON.parse(localStorage.getItem('Persons')) === null) {
-      return contacts;
-    } else {
-      return JSON.parse(localStorage.getItem('Persons'));
-    }
-  };
+  // const itemToIterate = () => {
+  //   if (JSON.parse(localStorage.getItem('Persons')) === null) {
+  //     return contacts;
+  //   } else {
+  //     return JSON.parse(localStorage.getItem('Persons'));
+  //   }
+  // };
   return (
     <div>
-      {itemToIterate()
+      {contacts
         .filter(contact => contact.name.toLowerCase().includes(filter))
         .map(contact => (
           <p key={nanoid()}>
@@ -20,11 +20,15 @@ export const ContactList = ({ filter, contacts, setContacts }) => {
             {contact.number}
             <button
               onClick={e => {
-                let index = contacts.indexOf(contact);
-                setContacts(contacts.splice(index, 1));
-                let localStoragePersons = JSON.parse(
-                  localStorage.getItem('Persons')
-                );
+                contacts.map((contact) => {
+                  if (contact.name === e.currentTarget.value) {
+                    let index = contacts.indexOf(contact);
+                    setContacts(contacts.splice(index, 1));
+                  }
+                })
+                 let localStoragePersons = JSON.parse(
+                   localStorage.getItem('Persons')
+                 );
                 localStoragePersons.map(person => {
                   if (person.name === e.currentTarget.value) {
                     let index = localStoragePersons.indexOf(person);

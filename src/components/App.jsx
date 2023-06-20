@@ -13,11 +13,19 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   let [filter, setFilter] = useState('');
+
   useEffect(() => {
     if (localStorage.getItem('Persons') === null) {
       localStorage.setItem('Persons', JSON.stringify(contacts));
+    } else {
+      setContacts(JSON.parse(localStorage.getItem('Persons')))
     }
-  });
+  }, []);
+  
+useEffect(() => {
+      localStorage.setItem('Persons', JSON.stringify(contacts));
+  }, [contacts]);
+
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
